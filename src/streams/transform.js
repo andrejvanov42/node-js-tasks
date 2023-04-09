@@ -2,7 +2,7 @@ import { Transform } from "node:stream";
 import { pipeline } from "node:stream/promises";
 
 const transform = async () => {
-  const readble = process.stdin;
+  const readable = process.stdin;
   const writable = process.stdout;
   const reverseText = new Transform({
     transform(chunk, enc, callback) {
@@ -11,7 +11,7 @@ const transform = async () => {
       callback(null, reversedText + "\n");
     },
   });
-  await pipeline(readble, reverseText, writable);
+  await pipeline(readable, reverseText, writable);
 };
 
 await transform();
